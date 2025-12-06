@@ -204,7 +204,7 @@ export function AgentSidebar() {
                         {/* Semi-Auto Limit */}
                         {approvalMode === 'semi-auto' && (
                             <div className="space-y-1">
-                                <label className="text-[10px] text-gray-400">Auto-approve under ₹</label>
+                                <label className="text-[10px] text-gray-400">Auto-approve under $</label>
                                 <Input
                                     type="number"
                                     value={autoApproveLimit}
@@ -221,7 +221,7 @@ export function AgentSidebar() {
                             </label>
                             <div className="grid grid-cols-2 gap-2">
                                 <div>
-                                    <label className="text-[10px] text-gray-500">Daily ₹</label>
+                                    <label className="text-[10px] text-gray-500">Daily $</label>
                                     <Input
                                         type="number"
                                         value={spendConfig.daily}
@@ -230,7 +230,7 @@ export function AgentSidebar() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="text-[10px] text-gray-500">Weekly ₹</label>
+                                    <label className="text-[10px] text-gray-500">Weekly $</label>
                                     <Input
                                         type="number"
                                         value={spendConfig.weekly}

@@ -102,7 +102,7 @@ export const AgentEventBus = {
     },
 
     logOrderPlaced(items: string[], total: number) {
-        this.emit('order_placed', `🛒 Order placed: ${items.length} items for ₹${total.toFixed(2)}`);
+        this.emit('order_placed', `🛒 Order placed: ${items.length} items for $${total.toFixed(2)}`);
     },
 
     logInventoryLoaded(count: number) {
@@ -122,7 +122,7 @@ export const AgentEventBus = {
     },
 
     logSpendCapHit(amount: number, cap: number) {
-        this.emit('spend_cap_hit', `🚫 Spend cap hit: ₹${amount} exceeds ₹${cap} limit`);
+        this.emit('spend_cap_hit', `🚫 Spend cap hit: $${amount} exceeds $${cap} limit`);
     },
 
     logError(context: string, error: string) {

@@ -14,7 +14,7 @@ const STORAGE_KEY = 'smartpantry_approval_settings';
 
 const DEFAULT_SETTINGS: ApprovalSettings = {
     mode: 'manual',
-    autoApproveLimit: 500, // ₹500 default limit for semi-auto
+    autoApproveLimit: 500, // $500 default limit for semi-auto
     requireConfirmation: true,
     notifyOnPurchase: true,
 };
@@ -68,12 +68,12 @@ export const ApprovalModeService = {
                 if (amount <= settings.autoApproveLimit) {
                     return {
                         approved: true,
-                        reason: `Semi-auto: Order under ₹${settings.autoApproveLimit} limit`
+                        reason: `Semi-auto: Order under $${settings.autoApproveLimit} limit`
                     };
                 }
                 return {
                     approved: false,
-                    reason: `Semi-auto: Order exceeds ₹${settings.autoApproveLimit} limit, manual approval required`
+                    reason: `Semi-auto: Order exceeds $${settings.autoApproveLimit} limit, manual approval required`
                 };
 
             case 'manual':

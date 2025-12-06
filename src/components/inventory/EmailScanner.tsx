@@ -19,33 +19,33 @@ interface EmailScannerProps {
 // Sample grocery order emails for demo
 const SAMPLE_EMAILS = [
     {
-        subject: "🛒 Your BigBasket Order is Confirmed!",
+        subject: "🛒 Your Walmart Grocery Order is Confirmed!",
         body: `Hi Customer,
 
-Thank you for shopping with BigBasket! Your order has been confirmed.
+Thank you for shopping with Walmart! Your order has been confirmed.
 
-📦 Order #BB2024120789
+📦 Order #WM2024120789
 
 Your Items:
-• Amul Gold Milk 500ml × 2 — ₹64
-• Mother Dairy Curd 400g × 1 — ₹35  
-• Britannia Bread 400g × 1 — ₹45
-• Farm Fresh Eggs (12 pcs) × 1 — ₹85
-• Tata Salt 1kg × 1 — ₹28
-• Fortune Sunflower Oil 1L × 1 — ₹145
+• Horizon Organic Milk 64oz × 2 — $11.98
+• Chobani Greek Yogurt 32oz × 1 — $5.49
+• Nature's Own Honey Wheat Bread × 1 — $3.99
+• Organic Valley Eggs (12 pcs) × 1 — $6.99
+• Morton Salt 26oz × 1 — $1.49
+• Wesson Vegetable Oil 48oz × 1 — $4.99
 
-Total: ₹402 | Delivery: FREE
+Total: $34.93 | Delivery: FREE
 Expected Delivery: Tomorrow, 10 AM - 12 PM
 
 Happy Shopping! 🥬
-Team BigBasket`,
+Team Walmart`,
         items: [
-            { name: "Amul Gold Milk 500ml", quantity: 2, price: 64, category: "Dairy" },
-            { name: "Mother Dairy Curd 400g", quantity: 1, price: 35, category: "Dairy" },
-            { name: "Britannia Bread 400g", quantity: 1, price: 45, category: "Pantry" },
-            { name: "Farm Fresh Eggs 12pcs", quantity: 1, price: 85, category: "Dairy" },
-            { name: "Tata Salt 1kg", quantity: 1, price: 28, category: "Pantry" },
-            { name: "Fortune Sunflower Oil 1L", quantity: 1, price: 145, category: "Pantry" },
+            { name: "Horizon Organic Milk 64oz", quantity: 2, price: 5.99, category: "Dairy" },
+            { name: "Chobani Greek Yogurt 32oz", quantity: 1, price: 5.49, category: "Dairy" },
+            { name: "Nature's Own Bread", quantity: 1, price: 3.99, category: "Pantry" },
+            { name: "Organic Valley Eggs 12pcs", quantity: 1, price: 6.99, category: "Dairy" },
+            { name: "Morton Salt 26oz", quantity: 1, price: 1.49, category: "Pantry" },
+            { name: "Wesson Vegetable Oil 48oz", quantity: 1, price: 4.99, category: "Pantry" },
         ]
     },
     {
@@ -56,53 +56,53 @@ Great news! Your Amazon Fresh order is on its way.
 
 Order Details:
 ─────────────────
-• Nestle Milk 1L (Pack of 2) — ₹98
-• Parle-G Biscuits 800g — ₹72
-• Maggi 2-Minute Noodles (12 pack) — ₹156
-• Surf Excel Matic 2kg — ₹425
-• Vim Dishwash Bar 600g — ₹54
-• Lifebuoy Soap (4 pack) — ₹145
+• Fairlife Milk 52oz (Pack of 2) — $9.98
+• Oreo Cookies 20oz — $4.99
+• Kraft Mac & Cheese (12 pack) — $12.99
+• Tide Pods 42ct — $19.99
+• Dawn Dish Soap 28oz — $3.99
+• Dove Soap (8 pack) — $8.49
 ─────────────────
-Order Total: ₹950
+Order Total: $60.43
 
-Track your order at amazon.in/orders
+Track your order at amazon.com/orders
 
 Thanks for choosing Amazon Fresh!`,
         items: [
-            { name: "Nestle Milk 1L Pack of 2", quantity: 1, price: 98, category: "Dairy" },
-            { name: "Parle-G Biscuits 800g", quantity: 1, price: 72, category: "Pantry" },
-            { name: "Maggi 2-Min Noodles 12 pack", quantity: 1, price: 156, category: "Pantry" },
-            { name: "Surf Excel Matic 2kg", quantity: 1, price: 425, category: "Household" },
-            { name: "Vim Dishwash Bar 600g", quantity: 1, price: 54, category: "Household" },
-            { name: "Lifebuoy Soap 4 pack", quantity: 1, price: 145, category: "Household" },
+            { name: "Fairlife Milk 52oz Pack of 2", quantity: 1, price: 9.98, category: "Dairy" },
+            { name: "Oreo Cookies 20oz", quantity: 1, price: 4.99, category: "Pantry" },
+            { name: "Kraft Mac & Cheese 12 pack", quantity: 1, price: 12.99, category: "Pantry" },
+            { name: "Tide Pods 42ct", quantity: 1, price: 19.99, category: "Household" },
+            { name: "Dawn Dish Soap 28oz", quantity: 1, price: 3.99, category: "Household" },
+            { name: "Dove Soap 8 pack", quantity: 1, price: 8.49, category: "Household" },
         ]
     },
     {
-        subject: "⚡ Zepto: Arriving in 10 minutes!",
+        subject: "⚡ Instacart: Arriving Soon!",
         body: `Hey there! 👋
 
-Your Zepto order is packed and your rider is on the way!
+Your Instacart order is packed and your shopper is on the way!
 
 🛒 Your Items:
-• Amul Butter 500g — ₹275
-• Haldiram's Bhujia 400g — ₹120
-• Pepsi 2L — ₹85
-• Lay's Classic 115g × 2 — ₹80
-• Cadbury Dairy Milk Silk — ₹95
-• Real Mixed Fruit Juice 1L — ₹110
+• Land O Lakes Butter 16oz — $4.99
+• Cheetos Crunchy 8.5oz — $3.49
+• Pepsi 2L — $2.99
+• Lay's Classic 10oz × 2 — $7.98
+• Hershey's Milk Chocolate Bar — $1.99
+• Tropicana Orange Juice 52oz — $4.49
 
-Total: ₹765
+Total: $25.93
 
-Your rider is 10 mins away! 🏍️
+Your shopper is 10 mins away! 🚗
 
-— Team Zepto`,
+— Team Instacart`,
         items: [
-            { name: "Amul Butter 500g", quantity: 1, price: 275, category: "Dairy" },
-            { name: "Haldiram Bhujia 400g", quantity: 1, price: 120, category: "Pantry" },
-            { name: "Pepsi 2L", quantity: 1, price: 85, category: "Beverages" },
-            { name: "Lays Classic 115g", quantity: 2, price: 80, category: "Pantry" },
-            { name: "Cadbury Dairy Milk Silk", quantity: 1, price: 95, category: "Pantry" },
-            { name: "Real Mixed Fruit Juice 1L", quantity: 1, price: 110, category: "Beverages" },
+            { name: "Land O Lakes Butter 16oz", quantity: 1, price: 4.99, category: "Dairy" },
+            { name: "Cheetos Crunchy 8.5oz", quantity: 1, price: 3.49, category: "Pantry" },
+            { name: "Pepsi 2L", quantity: 1, price: 2.99, category: "Beverages" },
+            { name: "Lays Classic 10oz", quantity: 2, price: 3.99, category: "Pantry" },
+            { name: "Hershey's Chocolate Bar", quantity: 1, price: 1.99, category: "Pantry" },
+            { name: "Tropicana Orange Juice 52oz", quantity: 1, price: 4.49, category: "Beverages" },
         ]
     }
 ];
@@ -263,7 +263,7 @@ export function EmailScanner({ onItemsParsed }: EmailScannerProps) {
                                     <span className="text-gray-400">x{item.quantity}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    {item.price && <span className="text-green-600">₹{item.price}</span>}
+                                    {item.price && <span className="text-green-600">${item.price}</span>}
                                     <span className="text-xs bg-gray-100 px-1 rounded">
                                         {item.category}
                                     </span>

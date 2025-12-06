@@ -210,7 +210,7 @@ export const AutonomousAgentService = {
                 if (products.length > 0) {
                     const best = products.reduce((a, b) => a.price < b.price ? a : b);
                     cart.push({ product: best, suggestion });
-                    this.addThought('decision', `🛒 Best deal: "${best.name}" @ ₹${best.price} (saves ₹${(best.price * 0.15).toFixed(0)} vs avg)`);
+                    this.addThought('decision', `🛒 Best deal: "${best.name}" @ $${best.price} (saves $${(best.price * 0.15).toFixed(0)} vs avg)`);
                 }
             }
 
@@ -222,7 +222,7 @@ export const AutonomousAgentService = {
 
             // Step 4: Calculate total and check limits
             const total = cart.reduce((sum, c) => sum + c.product.price, 0);
-            this.addThought('analysis', `💰 Cart total: ₹${total.toFixed(2)} for ${cart.length} items`);
+            this.addThought('analysis', `💰 Cart total: $${total.toFixed(2)} for ${cart.length} items`);
 
             // Step 5: Check spend caps
             const spendCheck = SpendControlsService.canPurchase(total);
@@ -250,7 +250,7 @@ export const AutonomousAgentService = {
                     agentDecision: true,
                 }, false);
 
-                this.addThought('action', `✅ Order placed successfully! Total: ₹${total.toFixed(2)}`);
+                this.addThought('action', `✅ Order placed successfully! Total: $${total.toFixed(2)}`);
 
                 currentState.pendingActions = 0;
             } else {
@@ -425,7 +425,7 @@ export const AutonomousAgentService = {
             }
 
             const best = inStock.reduce((a, b) => a.price < b.price ? a : b);
-            await this.addThoughtSlow('decision', `🛒 Best option: "${best.name}" at ₹${best.price} from ${best.brand}`);
+            await this.addThoughtSlow('decision', `🛒 Best option: "${best.name}" at $${best.price} from ${best.brand}`);
 
             // Step 3: Check spend cap
             this.setStatus('deciding', 'Checking spend limits...');
@@ -438,7 +438,7 @@ export const AutonomousAgentService = {
                 return;
             }
 
-            await this.addThoughtSlow('analysis', `💳 Spend check passed. ₹${best.price} is within limits.`);
+            await this.addThoughtSlow('analysis', `💳 Spend check passed. $${best.price} is within limits.`);
 
             // Step 4: Check approval mode
             const approvalCheck = ApprovalModeService.shouldAutoApprove(best.price);
@@ -478,7 +478,7 @@ export const AutonomousAgentService = {
                     await this.addThoughtSlow('observation', `⚠️ Could not update inventory`);
                 }
 
-                await this.addThoughtSlow('action', `✅ Order complete! "${best.name}" for ₹${best.price}`);
+                await this.addThoughtSlow('action', `✅ Order complete! "${best.name}" for $${best.price}`);
                 currentState.pendingActions = 0;
             } else {
                 // Need approval

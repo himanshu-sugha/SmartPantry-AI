@@ -164,11 +164,11 @@ Respond ONLY: {"intent": "add_item", "items": [{"name": "milk", "quantity": 1}],
         const apiKey = this.getApiKey();
         if (!apiKey) return { text: '[]', success: false, error: 'API key not configured' };
 
-        const prompt = `You are a grocery product database. Generate ${count} realistic Indian grocery products for: "${query}"
+        const prompt = `You are a grocery product database. Generate ${count} realistic US grocery products for: "${query}"
 
 For each product include realistic:
-- Indian brand names (Amul, Mother Dairy, Britannia, ITC, Nestle, Parle, Tata, etc.)
-- Realistic MRP in Indian Rupees (₹)
+- US brand names (Horizon, Organic Valley, Kraft, General Mills, Kellogg's, Tyson, etc.)
+- Realistic price in US Dollars ($)
 - Discount % (0-30%)
 - Rating (3.5-5.0)
 - Stock availability
@@ -177,11 +177,11 @@ Respond ONLY with JSON array (no explanation):
 [
   {
     "id": "prod_1",
-    "name": "Amul Gold Full Cream Milk 500ml",
-    "brand": "Amul",
-    "price": 30,
-    "mrp": 32,
-    "discount": 6,
+    "name": "Horizon Organic Whole Milk 64oz",
+    "brand": "Horizon",
+    "price": 5.99,
+    "mrp": 6.49,
+    "discount": 8,
     "category": "Dairy",
     "rating": 4.5,
     "reviews": 2847,
@@ -231,9 +231,9 @@ Respond ONLY with JSON array:
         return this.generate(prompt);
     },
 
-    // Analyze if price is good value (Indian market)
+    // Analyze if price is good value (US market)
     async analyzePriceValue(productName: string, price: number, quantity: string): Promise<GeminiResponse> {
-        const prompt = `Indian market: ${productName}, ₹${price}, ${quantity}
+        const prompt = `US market: ${productName}, $${price}, ${quantity}
 Is this good value? Respond in 1 sentence: "✅ Good deal" or "⚠️ Slightly high" or "💡 Tip: ..."`;
         return this.generate(prompt);
     },

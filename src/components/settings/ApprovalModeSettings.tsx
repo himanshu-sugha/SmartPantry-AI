@@ -86,8 +86,8 @@ export function ApprovalModeSettings() {
                             key={mode}
                             onClick={() => handleModeChange(mode)}
                             className={`flex items-start gap-4 p-4 rounded-lg border-2 transition-all text-left ${settings.mode === mode
-                                    ? 'border-blue-500 bg-blue-50'
-                                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                                ? 'border-blue-500 bg-blue-50'
+                                : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                                 }`}
                         >
                             <div className={`p-2 rounded-lg ${settings.mode === mode ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-600'
@@ -111,7 +111,7 @@ export function ApprovalModeSettings() {
                 {settings.mode === 'semi-auto' && (
                     <div className="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                         <label className="block text-sm font-medium text-yellow-800 mb-2">
-                            Auto-Approve Limit (₹)
+                            Auto-Approve Limit ($)
                         </label>
                         <div className="flex items-center gap-3">
                             <Input
@@ -123,7 +123,7 @@ export function ApprovalModeSettings() {
                                 step={100}
                             />
                             <span className="text-sm text-yellow-700">
-                                Orders under ₹{settings.autoApproveLimit} will be auto-approved
+                                Orders under ${settings.autoApproveLimit} will be auto-approved
                             </span>
                         </div>
                     </div>

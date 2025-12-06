@@ -72,7 +72,7 @@ export default function ShoppingListPage() {
                     const bestPrice = prods.reduce((best: VendorProduct, current: VendorProduct) =>
                         current.price < best.price ? current : best
                     );
-                    console.log(`💰 Auto-selected best price for ${suggestion.item.name}: ₹${bestPrice.price}`);
+                    console.log(`💰 Auto-selected best price for ${suggestion.item.name}: $${bestPrice.price}`);
                     setSelectedProducts(prev => ({ ...prev, [suggestion.item.id]: bestPrice }));
                 } else {
                     console.log(`⚠️ No products found for ${suggestion.item.name}`);
@@ -127,7 +127,7 @@ export default function ShoppingListPage() {
 
             // Auto-complete the purchase
             await completePurchase(selectedItems, total);
-            alert(`🤖 Order auto-approved!\n${approvalCheck.reason}\nTotal: ₹${total.toFixed(2)}`);
+            alert(`🤖 Order auto-approved!\n${approvalCheck.reason}\nTotal: $${total.toFixed(2)}`);
         } else {
             // Manual mode or semi-auto over limit - show confirmation dialog
             console.log(`👤 ${approvalCheck.reason}`);
@@ -206,7 +206,7 @@ export default function ShoppingListPage() {
 
         setCheckoutOpen(false);
         setSelectedProducts({}); // Clear selected items
-        alert(`Order placed successfully! Total: ₹${total.toFixed(2)}. Savings: ₹${savings.toFixed(2)}`);
+        alert(`Order placed successfully! Total: $${total.toFixed(2)}. Savings: $${savings.toFixed(2)}`);
     };
 
     const getUrgencyIcon = (urgency: string) => {
@@ -338,7 +338,7 @@ export default function ShoppingListPage() {
                                                                 </div>
                                                             </div>
                                                             <div className="text-right">
-                                                                <div className="text-lg font-bold text-emerald-600">₹{product.price.toFixed(2)}</div>
+                                                                <div className="text-lg font-bold text-emerald-600">${product.price.toFixed(2)}</div>
                                                                 {product.inStock ? (
                                                                     <span className="text-xs text-green-600">In Stock</span>
                                                                 ) : (
@@ -370,7 +370,7 @@ export default function ShoppingListPage() {
                             {selectedItems.map((product) => (
                                 <div key={product.id} className="flex justify-between text-sm">
                                     <span>{product.name} ({product.brand})</span>
-                                    <span className="font-medium">₹{product.price.toFixed(2)}</span>
+                                    <span className="font-medium">${product.price.toFixed(2)}</span>
                                 </div>
                             ))}
                         </div>
