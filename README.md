@@ -34,6 +34,8 @@ SmartPantry AI is an **autonomous home shopping agent** that:
 
 ---
 
+
+
 ## 4 Input Sources
 
 | Input Method | Technology | How It Works |
@@ -198,6 +200,19 @@ src/
 │   └── secureStorage.ts    # Encryption
 └── types/                  # TypeScript
 ```
+
+---
+
+## 🛡️ Agent Safety & Control
+
+We implemented robust safety mechanisms to ensure the autonomous agent operates within strict user-defined boundaries:
+
+| Control | Description | Default Limit |
+|---------|-------------|---------------|
+| **Spend Caps** | Hard limits on agent spending per day/week/month to prevent overspending. | $100/day |
+| **Approval Modes** | **Manual** (all require approval), **Semi-Auto** (under limit), **Auto** (fully autonomous). | Manual |
+| **Vendor Whitelist** | Agent can only purchase from approved vendors (e.g., Walmart, Amazon). | Restricted |
+| **Human-in-the-Loop** | "Semi-Auto" mode requires human confirmation for purchases exceeding the set threshold. | > $50 |
 
 ---
 
