@@ -27,23 +27,23 @@ Thank you for shopping with Walmart! Your order has been confirmed.
 📦 Order #WM2024120789
 
 Your Items:
-• Horizon Organic Milk 64oz × 2 — $11.98
-• Chobani Greek Yogurt 32oz × 1 — $5.49
-• Nature's Own Honey Wheat Bread × 1 — $3.99
-• Organic Valley Eggs (12 pcs) × 1 — $6.99
+• Horizon Organic Milk 64oz × 3 — $17.97
+• Chobani Greek Yogurt 32oz × 4 — $21.96
+• Nature's Own Honey Wheat Bread × 2 — $7.98
+• Organic Valley Eggs (12 pcs) × 2 — $13.98
 • Morton Salt 26oz × 1 — $1.49
 • Wesson Vegetable Oil 48oz × 1 — $4.99
 
-Total: $34.93 | Delivery: FREE
+Total: $68.37 | Delivery: FREE
 Expected Delivery: Tomorrow, 10 AM - 12 PM
 
 Happy Shopping! 🥬
 Team Walmart`,
         items: [
-            { name: "Horizon Organic Milk 64oz", quantity: 2, price: 5.99, category: "Dairy" },
-            { name: "Chobani Greek Yogurt 32oz", quantity: 1, price: 5.49, category: "Dairy" },
-            { name: "Nature's Own Bread", quantity: 1, price: 3.99, category: "Pantry" },
-            { name: "Organic Valley Eggs 12pcs", quantity: 1, price: 6.99, category: "Dairy" },
+            { name: "Horizon Organic Milk 64oz", quantity: 3, price: 5.99, category: "Dairy" },
+            { name: "Chobani Greek Yogurt 32oz", quantity: 4, price: 5.49, category: "Dairy" },
+            { name: "Nature's Own Bread", quantity: 2, price: 3.99, category: "Pantry" },
+            { name: "Organic Valley Eggs 12pcs", quantity: 2, price: 6.99, category: "Dairy" },
             { name: "Morton Salt 26oz", quantity: 1, price: 1.49, category: "Pantry" },
             { name: "Wesson Vegetable Oil 48oz", quantity: 1, price: 4.99, category: "Pantry" },
         ]
@@ -56,24 +56,24 @@ Great news! Your Amazon Fresh order is on its way.
 
 Order Details:
 ─────────────────
-• Fairlife Milk 52oz (Pack of 2) — $9.98
-• Oreo Cookies 20oz — $4.99
-• Kraft Mac & Cheese (12 pack) — $12.99
+• Fairlife Milk 52oz (Pack of 2) × 2 — $19.96
+• Oreo Cookies 20oz × 2 — $9.98
+• Kraft Mac & Cheese (12 pack) × 2 — $25.98
 • Tide Pods 42ct — $19.99
-• Dawn Dish Soap 28oz — $3.99
+• Dawn Dish Soap 28oz × 2 — $7.98
 • Dove Soap (8 pack) — $8.49
 ─────────────────
-Order Total: $60.43
+Order Total: $92.38
 
 Track your order at amazon.com/orders
 
 Thanks for choosing Amazon Fresh!`,
         items: [
-            { name: "Fairlife Milk 52oz Pack of 2", quantity: 1, price: 9.98, category: "Dairy" },
-            { name: "Oreo Cookies 20oz", quantity: 1, price: 4.99, category: "Pantry" },
-            { name: "Kraft Mac & Cheese 12 pack", quantity: 1, price: 12.99, category: "Pantry" },
+            { name: "Fairlife Milk 52oz Pack of 2", quantity: 2, price: 9.98, category: "Dairy" },
+            { name: "Oreo Cookies 20oz", quantity: 2, price: 4.99, category: "Pantry" },
+            { name: "Kraft Mac & Cheese 12 pack", quantity: 2, price: 12.99, category: "Pantry" },
             { name: "Tide Pods 42ct", quantity: 1, price: 19.99, category: "Household" },
-            { name: "Dawn Dish Soap 28oz", quantity: 1, price: 3.99, category: "Household" },
+            { name: "Dawn Dish Soap 28oz", quantity: 2, price: 3.99, category: "Household" },
             { name: "Dove Soap 8 pack", quantity: 1, price: 8.49, category: "Household" },
         ]
     },
@@ -84,25 +84,25 @@ Thanks for choosing Amazon Fresh!`,
 Your Instacart order is packed and your shopper is on the way!
 
 🛒 Your Items:
-• Land O Lakes Butter 16oz — $4.99
-• Cheetos Crunchy 8.5oz — $3.49
-• Pepsi 2L — $2.99
-• Lay's Classic 10oz × 2 — $7.98
-• Hershey's Milk Chocolate Bar — $1.99
-• Tropicana Orange Juice 52oz — $4.49
+• Land O Lakes Butter 16oz × 2 — $9.98
+• Cheetos Crunchy 8.5oz × 4 — $13.96
+• Pepsi 2L × 6 — $17.94
+• Lay's Classic 10oz × 3 — $11.97
+• Hershey's Milk Chocolate Bar × 5 — $9.95
+• Tropicana Orange Juice 52oz × 2 — $8.98
 
-Total: $25.93
+Total: $72.78
 
 Your shopper is 10 mins away! 🚗
 
 — Team Instacart`,
         items: [
-            { name: "Land O Lakes Butter 16oz", quantity: 1, price: 4.99, category: "Dairy" },
-            { name: "Cheetos Crunchy 8.5oz", quantity: 1, price: 3.49, category: "Pantry" },
-            { name: "Pepsi 2L", quantity: 1, price: 2.99, category: "Beverages" },
-            { name: "Lays Classic 10oz", quantity: 2, price: 3.99, category: "Pantry" },
-            { name: "Hershey's Chocolate Bar", quantity: 1, price: 1.99, category: "Pantry" },
-            { name: "Tropicana Orange Juice 52oz", quantity: 1, price: 4.49, category: "Beverages" },
+            { name: "Land O Lakes Butter 16oz", quantity: 2, price: 4.99, category: "Dairy" },
+            { name: "Cheetos Crunchy 8.5oz", quantity: 4, price: 3.49, category: "Pantry" },
+            { name: "Pepsi 2L", quantity: 6, price: 2.99, category: "Beverages" },
+            { name: "Lays Classic 10oz", quantity: 3, price: 3.99, category: "Pantry" },
+            { name: "Hershey's Chocolate Bar", quantity: 5, price: 1.99, category: "Pantry" },
+            { name: "Tropicana Orange Juice 52oz", quantity: 2, price: 4.49, category: "Beverages" },
         ]
     }
 ];
