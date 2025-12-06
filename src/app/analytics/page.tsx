@@ -153,7 +153,7 @@ export default function AnalyticsPage() {
                                     </Badge>
                                 </div>
                                 <p className="text-3xl font-bold text-blue-900 mt-2">
-                                    ${data?.spendData?.monthly_spent?.toFixed(0) || 0}
+                                    ₹{data?.spendData?.monthly_spent?.toFixed(0) || 0}
                                 </p>
                                 <p className="text-sm text-blue-600">Spent This Month</p>
                             </CardContent>
@@ -271,7 +271,7 @@ export default function AnalyticsPage() {
                                     Budget Progress
                                 </CardTitle>
                                 <CardDescription>
-                                    ${data?.spendData?.monthly_spent?.toFixed(2) || '0'} of ${data?.spendData?.monthly_limit?.toFixed(2) || '0'} monthly limit
+                                    ₹{data?.spendData?.monthly_spent?.toFixed(2) || '0'} of ₹{data?.spendData?.monthly_limit?.toFixed(2) || '0'} monthly limit
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
@@ -281,7 +281,7 @@ export default function AnalyticsPage() {
                                 />
                                 <div className="flex justify-between mt-2 text-sm text-gray-500">
                                     <span>{spendProgress.toFixed(0)}% used</span>
-                                    <span>${((data?.spendData?.monthly_limit || 0) - (data?.spendData?.monthly_spent || 0)).toFixed(2)} remaining</span>
+                                    <span>₹{((data?.spendData?.monthly_limit || 0) - (data?.spendData?.monthly_spent || 0)).toFixed(2)} remaining</span>
                                 </div>
                             </CardContent>
                         </Card>
@@ -296,7 +296,7 @@ export default function AnalyticsPage() {
                                 <CardTitle className="text-sm font-medium">Monthly Spent</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-3xl font-bold">${data?.spendData?.monthly_spent?.toFixed(2) || '0.00'}</p>
+                                <p className="text-3xl font-bold">₹{data?.spendData?.monthly_spent?.toFixed(2) || '0.00'}</p>
                                 <p className="text-xs text-gray-500 mt-1">This month</p>
                             </CardContent>
                         </Card>
@@ -306,7 +306,7 @@ export default function AnalyticsPage() {
                                 <CardTitle className="text-sm font-medium">Budget Limit</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-3xl font-bold">${data?.spendData?.monthly_limit?.toFixed(2) || '500.00'}</p>
+                                <p className="text-3xl font-bold">₹{data?.spendData?.monthly_limit?.toFixed(2) || '500.00'}</p>
                                 <p className="text-xs text-gray-500 mt-1">Monthly cap</p>
                             </CardContent>
                         </Card>
@@ -317,7 +317,7 @@ export default function AnalyticsPage() {
                             </CardHeader>
                             <CardContent>
                                 <p className="text-3xl font-bold text-emerald-600">
-                                    ${data?.wallet?.stats?.totalSavings?.toFixed(2) || '0.00'}
+                                    ₹{data?.wallet?.stats?.totalSavings?.toFixed(2) || '0.00'}
                                 </p>
                                 <p className="text-xs text-gray-500 mt-1">Through smart shopping</p>
                             </CardContent>
