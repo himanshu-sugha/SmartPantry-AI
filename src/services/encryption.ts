@@ -21,7 +21,7 @@ export const EncryptionService = {
         return crypto.subtle.deriveKey(
             {
                 name: 'PBKDF2',
-                salt: salt,
+                salt: salt.buffer as ArrayBuffer,
                 iterations: 100000,
                 hash: 'SHA-256',
             },
@@ -48,8 +48,8 @@ export const EncryptionService = {
 
         return {
             ciphertext: this.arrayBufferToBase64(encrypted),
-            iv: this.arrayBufferToBase64(iv),
-            salt: this.arrayBufferToBase64(salt),
+            iv: this.arrayBufferToBase64(iv.buffer as ArrayBuffer),
+            salt: this.arrayBufferToBase64(salt.buffer as ArrayBuffer),
         };
     },
 

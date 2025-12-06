@@ -1,7 +1,13 @@
-
+import { Suspense } from 'react';
 import { InventoryList } from '@/components/inventory/InventoryList';
 
 export const dynamic = 'force-dynamic';
+
+function InventoryLoading() {
+    return (
+        <div className="text-center py-12">Loading inventory...</div>
+    );
+}
 
 export default function InventoryPage() {
     return (
@@ -12,7 +18,9 @@ export default function InventoryPage() {
                     <p className="text-gray-500">Manage your household items and track expiration dates.</p>
                 </div>
             </div>
-            <InventoryList />
+            <Suspense fallback={<InventoryLoading />}>
+                <InventoryList />
+            </Suspense>
         </div>
     );
 }

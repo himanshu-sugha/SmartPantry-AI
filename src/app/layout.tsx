@@ -1,4 +1,4 @@
-
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   description: "Autonomous home shopping agent",
 };
 
+function SidebarFallback() {
+  return <div className="w-64 bg-gray-100 dark:bg-gray-900" />;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,11 +27,13 @@ export default function RootLayout({
     <html lang="en" className="h-full dark" suppressHydrationWarning>
       <body className={cn(inter.className, "h-full bg-gray-50 dark:bg-gray-950")}>
         <div className="flex h-full">
-          <Sidebar />
+          <Suspense fallback={<SidebarFallback />}>
+            <Sidebar />
+          </Suspense>
           <div className="flex flex-1 flex-col overflow-hidden pr-80">
             <Header />
             <main className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-950">
-              {children}
+              <Suspense>{children}</Suspense>
             </main>
           </div>
           <AgentSidebarWrapper />
@@ -36,6 +42,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
