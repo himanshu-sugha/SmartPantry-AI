@@ -213,20 +213,20 @@ Respond ONLY with JSON array (no explanation):
         const prompt = `User is buying: ${cartItems.join(', ')}
 Already has: ${inventoryItems.join(', ')}
 
-Suggest 3 complementary Indian grocery products they might need.
+Suggest 3 complementary US grocery products they might need.
 Respond ONLY with JSON array:
 [
-  {"name": "Britannia Bread", "reason": "Goes well with milk", "price": 45, "brand": "Britannia"}
+  {"name": "Nature's Own Bread", "reason": "Goes well with milk", "price": 3.99, "brand": "Nature's Own"}
 ]`;
         return this.generate(prompt);
     },
 
     // Find substitute products
     async findSubstitutes(productName: string, reason: string = "out of stock"): Promise<GeminiResponse> {
-        const prompt = `"${productName}" is ${reason}. Suggest 3 Indian alternatives.
+        const prompt = `"${productName}" is ${reason}. Suggest 3 US alternatives.
 Respond ONLY with JSON array:
 [
-  {"name": "Mother Dairy Full Cream Milk 500ml", "brand": "Mother Dairy", "price": 28, "reason": "Similar quality, slightly cheaper"}
+  {"name": "Organic Valley Whole Milk 64oz", "brand": "Organic Valley", "price": 5.99, "reason": "Similar quality, organic"}
 ]`;
         return this.generate(prompt);
     },
@@ -264,8 +264,8 @@ Ignore:
 
 Respond ONLY with JSON array:
 [
-  {"name": "Amul Milk 500ml", "quantity": 2, "price": 30, "category": "Dairy"},
-  {"name": "Bread", "quantity": 1, "price": 45, "category": "Pantry"}
+  {"name": "Horizon Organic Milk 64oz", "quantity": 1, "price": 5.99, "category": "Dairy"},
+  {"name": "Nature's Own Bread", "quantity": 1, "price": 4.29, "category": "Pantry"}
 ]
 
 If no groceries found, return: []`;

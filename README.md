@@ -70,7 +70,7 @@ Our `VendorAPIService` is a **sandbox-compatible adapter layer** designed for ea
 **How it works:**
 1. User searches for a product (e.g., "Milk")
 2. `VendorAPIService.searchProducts()` is called
-3. If Gemini configured: AI generates realistic Indian products with brands/prices
+3. If Gemini configured: AI generates realistic US products with brands/prices
 4. If Gemini unavailable: Falls back to mock database
 5. When real sandbox credentials available: Just enable the Amazon/Walmart adapters
 
@@ -87,9 +87,9 @@ Instead, we created a **sandbox-equivalent experience** using Gemini AI:
 
 | Real Sandbox | Our AI Sandbox |
 |--------------|----------------|
-| Returns real products | AI generates realistic Indian products |
+| Returns real products | AI generates realistic US products |
 | Real prices | AI generates market-accurate prices |
-| Real brands | AI uses actual brand names (Amul, Tata, etc.) |
+| Real brands | AI uses actual brand names (Horizon, Kraft, etc.) |
 | Rate limited | Faster response times |
 | Requires credentials | Just needs Gemini API key |
 
@@ -143,7 +143,7 @@ Instead, we created a **sandbox-equivalent experience** using Gemini AI:
 | `parseGroceryEmail()` | Parse order confirmation emails |
 | `getProductRecommendations()` | Cross-selling suggestions |
 | `findSubstitutes()` | Suggest alternatives when out of stock |
-| `analyzePriceValue()` | Determine if price is good value (Indian market) |
+| `analyzePriceValue()` | Determine if price is good value (US market) |
 | `getMealSuggestions()` | Recipe ideas from inventory |
 | `parseNaturalCommand()` | Parse natural language commands |
 

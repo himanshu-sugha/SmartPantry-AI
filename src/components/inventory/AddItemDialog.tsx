@@ -136,8 +136,8 @@ export function AddItemDialog({ onAdd }: AddItemDialogProps) {
                     <TabsList className="grid w-full grid-cols-4">
                         <TabsTrigger value="manual">Manual</TabsTrigger>
                         <TabsTrigger value="receipt">Receipt</TabsTrigger>
-                        <TabsTrigger value="camera">Camera</TabsTrigger>
                         <TabsTrigger value="email">Email</TabsTrigger>
+                        <TabsTrigger value="camera">Camera</TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="manual">
