@@ -211,7 +211,7 @@ export default function AnalyticsPage() {
                                                 cx="50%"
                                                 cy="50%"
                                                 outerRadius={80}
-                                                label={({ name, percent }: { name: string; percent?: number }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
+                                                label={({ name, percent }: any) => `${name || ''} ${((percent || 0) * 100).toFixed(0)}%`}
                                             >
                                                 {categoryData.map((entry: any, index: number) => (
                                                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -271,7 +271,7 @@ export default function AnalyticsPage() {
                                     Budget Progress
                                 </CardTitle>
                                 <CardDescription>
-                                    ${data.spendData.monthly_spent.toFixed(2)} of ${data.spendData.monthly_limit.toFixed(2)} monthly limit
+                                    ${data?.spendData?.monthly_spent?.toFixed(2) || '0'} of ${data?.spendData?.monthly_limit?.toFixed(2) || '0'} monthly limit
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
@@ -281,7 +281,7 @@ export default function AnalyticsPage() {
                                 />
                                 <div className="flex justify-between mt-2 text-sm text-gray-500">
                                     <span>{spendProgress.toFixed(0)}% used</span>
-                                    <span>${(data.spendData.monthly_limit - data.spendData.monthly_spent).toFixed(2)} remaining</span>
+                                    <span>${((data?.spendData?.monthly_limit || 0) - (data?.spendData?.monthly_spent || 0)).toFixed(2)} remaining</span>
                                 </div>
                             </CardContent>
                         </Card>
