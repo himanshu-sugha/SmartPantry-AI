@@ -69,12 +69,15 @@ export function Sidebar() {
                 })}
             </nav>
             <div className="border-t border-gray-800 p-4">
-                <div className="flex items-center">
+                <Link href="/settings" className="flex items-center hover:bg-gray-800 rounded-lg p-2 -m-2 transition-colors">
+                    <div className="h-8 w-8 rounded-full bg-emerald-600 flex items-center justify-center text-white font-medium">
+                        U
+                    </div>
                     <div className="ml-3">
                         <p className="text-sm font-medium text-white">User</p>
-                        <p className="text-xs text-gray-400">View Profile</p>
+                        <p className="text-xs text-gray-400">View Profile →</p>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     )
