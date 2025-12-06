@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full dark" suppressHydrationWarning>
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <body className={cn(inter.className, "h-full bg-gray-50 dark:bg-gray-950")}>
         <div className="flex h-full">
           <Suspense fallback={<SidebarFallback />}>
