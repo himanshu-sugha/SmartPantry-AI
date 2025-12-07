@@ -8,6 +8,7 @@ import { SpendControlsService } from '@/services/spendControls';
 import { AuditLogService } from '@/services/auditLog';
 import { BlockchainService } from '@/services/blockchain';
 import { ApprovalModeService } from '@/services/approvalMode';
+import { AutonomousAgentService } from '@/services/autonomousAgent';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -24,6 +25,7 @@ export default function ShoppingListPage() {
     const [loadingProducts, setLoadingProducts] = useState(false);
     const [checkoutOpen, setCheckoutOpen] = useState(false);
     const [aiProductsUsed, setAiProductsUsed] = useState(false);
+    const [agentPending, setAgentPending] = useState(0);
 
     useEffect(() => {
         loadSuggestions();
@@ -34,6 +36,10 @@ export default function ShoppingListPage() {
             const inventory = await InventoryService.getItems();
             const smartSuggestions = SuggestionsService.generateSuggestions(inventory);
             setSuggestions(smartSuggestions);
+
+            // Check agent's pending items
+            const agentState = AutonomousAgentService.getState();
+            setAgentPending(agentState.pendingActions);
 
             // Load products for each suggestion
             if (smartSuggestions.length > 0) {
@@ -270,8 +276,22 @@ export default function ShoppingListPage() {
                 <Card>
                     <CardContent className="p-12 text-center">
                         <ShoppingCart className="h-16 w-16 mx-auto text-gray-300 mb-4" />
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">No Suggestions Yet</h3>
-                        <p className="text-gray-500">Add items to your inventory and track consumption to get smart suggestions.</p>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                            {agentPending > 0 ? 'Agent Has Pending Items' : 'No Suggestions Yet'}
+                        </h3>
+                        <p className="text-gray-500">
+                            {agentPending > 0
+                                ? `The agent found ${agentPending} item(s) to reorder. Click "Run Agent Cycle" in the sidebar to refresh.`
+                                : 'Add items to your inventory and track consumption to get smart suggestions.'}
+                        </p>
+                        {agentPending > 0 && (
+                            <Button
+                                onClick={loadSuggestions}
+                                className="mt-4 bg-emerald-600 hover:bg-emerald-700"
+                            >
+                                Refresh Suggestions
+                            </Button>
+                        )}
                     </CardContent>
                 </Card>
             ) : (
