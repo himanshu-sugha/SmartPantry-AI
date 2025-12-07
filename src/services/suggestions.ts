@@ -21,7 +21,11 @@ export const SuggestionsService = {
                 item.quantity
             );
 
+            // Check if item is low stock (quantity <= min_quantity)
+            const isLowStock = item.quantity <= (item.min_quantity ?? 1);
+
             if (recommendation.shouldReorder) {
+                // ML-based recommendation (has consumption data)
                 const prediction = ForecastingService.predictRunout(item.id, item.quantity);
 
                 let urgency: 'high' | 'medium' | 'low' = 'low';
@@ -36,6 +40,15 @@ export const SuggestionsService = {
                     recommendedQuantity: recommendation.recommendedQuantity,
                     urgency,
                     confidence: prediction.confidence_score,
+                });
+            } else if (isLowStock && item.quantity > 0) {
+                // Fallback: Low stock without consumption data
+                suggestions.push({
+                    item,
+                    reason: `Low stock alert: Only ${item.quantity} left (min: ${item.min_quantity ?? 1}). No consumption history yet.`,
+                    recommendedQuantity: 5, // Default recommendation
+                    urgency: item.quantity === 0 ? 'high' : 'medium',
+                    confidence: 0, // 0% confidence = no ML data
                 });
             }
         }
