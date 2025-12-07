@@ -14,6 +14,18 @@ SmartPantry AI is an **autonomous home shopping agent** that:
 
 ---
 
+## 📑 Table of Contents
+1. [Features & Implementation](#features--implementation)
+2. [How It Works (User Flow)](#-how-it-works-user-flow)
+3. [4 Input Sources](#4-input-sources)
+4. [Vendor Sandbox](#vendor-sandbox-architecture)
+5. [AI Capabilities](#gemini-ai-fallbacks)
+6. [Agent Safety](#%EF%B8%8F-agent-safety--control)
+7. [Tech Stack](#tech-stack)
+8. [Quick Start](#quick-start)
+
+---
+
 ## Features & Implementation
 
 | Feature | How It Works | File/Service |
@@ -31,6 +43,12 @@ SmartPantry AI is an **autonomous home shopping agent** that:
 | **Blockchain Hash** | Audit entries hashed for integrity verification | `src/services/blockchain.ts` |
 | **AES-256-GCM Encryption** | All data encrypted with military-grade encryption | `src/services/encryption.ts` |
 | **On-Device Storage** | Data never leaves browser (localStorage) | `src/services/secureStorage.ts` |
+
+---
+
+## 🔄 How It Works (User Flow)
+
+![User Flow Diagram](public/user_flow_diagram.png)
 
 ---
 
