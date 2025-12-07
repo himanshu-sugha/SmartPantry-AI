@@ -171,7 +171,7 @@ export function InventoryList() {
 
         try {
             const { AutonomousAgentService } = await import('@/services/autonomousAgent');
-            AutonomousAgentService.onItemConsumed(item.name, newQuantity, item.min_quantity || 2);
+            AutonomousAgentService.onItemConsumed(item.name, newQuantity, item.min_quantity ?? 1);
         } catch (e) {
             console.log('Agent not triggered:', e);
         }

@@ -46,6 +46,7 @@ export function AddItemDialog({ onAdd }: AddItemDialogProps) {
         quantity: 1,
         unit: 'pcs',
         expiry_date: '',
+        min_quantity: 1,
     });
 
     // AI auto-categorization when item name changes
@@ -103,6 +104,7 @@ export function AddItemDialog({ onAdd }: AddItemDialogProps) {
                 quantity: 1,
                 unit: 'pcs',
                 expiry_date: '',
+                min_quantity: 1,
             });
             setAiSuggested(false);
         } catch (error) {
@@ -221,6 +223,22 @@ export function AddItemDialog({ onAdd }: AddItemDialogProps) {
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="min_quantity" className="text-right" title="Alert when stock drops to this level">
+                                        Min Stock
+                                    </Label>
+                                    <div className="col-span-3 flex items-center gap-2">
+                                        <Input
+                                            id="min_quantity"
+                                            type="number"
+                                            value={formData.min_quantity ?? 1}
+                                            onChange={(e) => setFormData({ ...formData, min_quantity: parseInt(e.target.value) || 1 })}
+                                            className="w-20"
+                                            min={0}
+                                        />
+                                        <span className="text-xs text-gray-500">Alert when stock drops to this level</span>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
                                     <Label htmlFor="expiry" className="text-right">
                                         Expiry
                                     </Label>
@@ -284,6 +302,7 @@ export function AddItemDialog({ onAdd }: AddItemDialogProps) {
                                         quantity: item.quantity || 1,
                                         unit: 'pcs',
                                         expiry_date: '',
+                                        min_quantity: item.min_quantity ?? Math.max(1, (item.quantity || 1) - 1),
                                     });
                                 }
 

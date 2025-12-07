@@ -1,56 +1,29 @@
 import { InventoryItem, CreateItemDTO } from '@/types/inventory';
 import { BlockchainService } from './blockchain';
 import { AgentEventBus } from './agentEventBus';
-import { SecureStorage } from './secureStorage';
 
 const STORAGE_KEY = 'smartpantry_inventory';
-const USE_ENCRYPTION = true; // Enable AES-256-GCM encryption
 
-// Inventory service with AES-256-GCM encrypted storage
+// Mock inventory service using localStorage
 export const InventoryService = {
-    // Get all items (from encrypted storage)
+    // Get all items
     async getItems(): Promise<InventoryItem[]> {
         if (typeof window === 'undefined') return [];
 
-        try {
-            // Try encrypted storage first
-            if (USE_ENCRYPTION) {
-                const encryptedData = await SecureStorage.getItem<InventoryItem[]>(STORAGE_KEY);
-                if (encryptedData) {
-                    return encryptedData.sort((a, b) =>
-                        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-                    );
-                }
-            }
-
-            // Fallback to plain localStorage (for migration)
-            const data = localStorage.getItem(STORAGE_KEY);
-            if (data) {
-                const items = JSON.parse(data);
-                // Migrate to encrypted storage
-                if (USE_ENCRYPTION) {
-                    await SecureStorage.setItem(STORAGE_KEY, items);
-                    console.log('📦 Inventory migrated to encrypted storage');
-                }
-                return items.sort((a: InventoryItem, b: InventoryItem) =>
-                    new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-                );
-            }
-
-            return [];
-        } catch (error) {
-            console.error('Failed to load inventory:', error);
-            AgentEventBus.logError('Inventory', 'Failed to decrypt inventory data');
+        const data = localStorage.getItem(STORAGE_KEY);
+        if (!data) {
             return [];
         }
-    },
 
-    // Save items (to encrypted storage)
-    async saveItems(items: InventoryItem[]): Promise<void> {
-        if (USE_ENCRYPTION) {
-            await SecureStorage.setItem(STORAGE_KEY, items);
-        } else {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+        try {
+            const items = JSON.parse(data);
+            return items.sort((a: InventoryItem, b: InventoryItem) =>
+                new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+            );
+        } catch (error) {
+            console.error('Failed to parse inventory data:', error);
+            AgentEventBus.logError('Inventory', 'Failed to parse inventory data');
+            return [];
         }
     },
 
@@ -64,15 +37,17 @@ export const InventoryService = {
 
         const items = await this.getItems();
         items.unshift(newItem);
-        await this.saveItems(items);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
 
         // Log to Agent
         AgentEventBus.logItemAdded(item.name, item.quantity);
 
-        // Earn PantryPoints
+        // Earn PantryPoints for adding item
         try {
             BlockchainService.recordAction('item_added', { itemName: item.name });
-        } catch (e) { }
+        } catch (e) {
+            // Wallet may not be connected
+        }
 
         return newItem;
     },
@@ -85,8 +60,8 @@ export const InventoryService = {
         if (index === -1) return null;
 
         const oldItem = items[index];
-        items[index] = { ...items[index], ...updates, updated_at: new Date().toISOString() };
-        await this.saveItems(items);
+        items[index] = { ...items[index], ...updates };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
 
         // Log to Agent
         const changes = Object.keys(updates).map(k => `${k}: ${(updates as any)[k]}`).join(', ');
@@ -100,8 +75,9 @@ export const InventoryService = {
         const items = await this.getItems();
         const itemToDelete = items.find(item => item.id === id);
         const filtered = items.filter(item => item.id !== id);
-        await this.saveItems(filtered);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
 
+        // Log to Agent
         if (itemToDelete) {
             AgentEventBus.logItemDeleted(itemToDelete.name);
         }
@@ -113,13 +89,12 @@ export const InventoryService = {
         return items.find(item => item.id === id) || null;
     },
 
-    // Clear all items
+    // Clear all items (for testing)
     async clearAll(): Promise<void> {
-        SecureStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(STORAGE_KEY);
     },
 
-    // Update item quantity (after purchase)
+    // Update item quantity (e.g. after purchase)
     async updateQuantity(id: string, delta: number): Promise<void> {
         const items = await this.getItems();
         const index = items.findIndex(item => item.id === id);
@@ -127,17 +102,7 @@ export const InventoryService = {
         if (index !== -1) {
             items[index].quantity += delta;
             items[index].updated_at = new Date().toISOString();
-            await this.saveItems(items);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
         }
     },
-
-    // Get encryption status
-    getEncryptionStatus(): { enabled: boolean; algorithm: string } {
-        const status = SecureStorage.getStatus();
-        return {
-            enabled: USE_ENCRYPTION && status.enabled,
-            algorithm: status.algorithm,
-        };
-    },
 };
-

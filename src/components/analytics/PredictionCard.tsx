@@ -64,6 +64,11 @@ export function PredictionCard({ item, prediction }: PredictionCardProps) {
                                     {getConfidenceLabel(prediction.confidence_score)} ({Math.round(prediction.confidence_score * 100)}%)
                                 </Badge>
                             </div>
+                            {prediction.confidence_score < 0.5 && (
+                                <div className="text-xs text-gray-400 italic">
+                                    💡 Confidence increases with more usage data
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

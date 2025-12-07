@@ -32,7 +32,7 @@ export default function DashboardPage() {
       // Get inventory data
       const items = await InventoryService.getItems();
       const totalItems = items.length;
-      const lowStockItems = items.filter(item => item.quantity <= 2).length;
+      const lowStockItems = items.filter(item => item.quantity <= (item.min_quantity ?? 1)).length;
 
       // Get expiring items (within 7 days)
       const now = new Date();

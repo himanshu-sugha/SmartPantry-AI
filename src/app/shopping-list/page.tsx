@@ -302,7 +302,12 @@ export default function ShoppingListPage() {
                                                             style={{ width: `${suggestion.confidence * 100}%` }}
                                                         />
                                                     </div>
-                                                    <span className="text-xs text-gray-500">{(suggestion.confidence * 100).toFixed(0)}% confident</span>
+                                                    <span className="text-xs text-gray-500">
+                                                        {(suggestion.confidence * 100).toFixed(0)}% confident
+                                                        {suggestion.confidence < 0.5 && (
+                                                            <span className="text-gray-400 ml-1">(Limited usage data)</span>
+                                                        )}
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>

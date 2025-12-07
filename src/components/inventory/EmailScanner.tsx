@@ -10,6 +10,7 @@ interface ParsedEmailItem {
     quantity: number;
     price?: number;
     category: string;
+    min_quantity?: number;
 }
 
 interface EmailScannerProps {
@@ -40,12 +41,12 @@ Expected Delivery: Tomorrow, 10 AM - 12 PM
 Happy Shopping! 🥬
 Team Walmart`,
         items: [
-            { name: "Horizon Organic Milk 64oz", quantity: 3, price: 5.99, category: "Dairy" },
-            { name: "Chobani Greek Yogurt 32oz", quantity: 4, price: 5.49, category: "Dairy" },
-            { name: "Nature's Own Bread", quantity: 2, price: 3.99, category: "Pantry" },
-            { name: "Organic Valley Eggs 12pcs", quantity: 2, price: 6.99, category: "Dairy" },
-            { name: "Morton Salt 26oz", quantity: 1, price: 1.49, category: "Pantry" },
-            { name: "Wesson Vegetable Oil 48oz", quantity: 1, price: 4.99, category: "Pantry" },
+            { name: "Horizon Organic Milk 64oz", quantity: 3, price: 5.99, category: "Dairy", min_quantity: 2 },
+            { name: "Chobani Greek Yogurt 32oz", quantity: 4, price: 5.49, category: "Dairy", min_quantity: 3 },
+            { name: "Nature's Own Bread", quantity: 2, price: 3.99, category: "Pantry", min_quantity: 1 },
+            { name: "Organic Valley Eggs 12pcs", quantity: 2, price: 6.99, category: "Dairy", min_quantity: 1 },
+            { name: "Morton Salt 26oz", quantity: 1, price: 1.49, category: "Pantry", min_quantity: 1 },
+            { name: "Wesson Vegetable Oil 48oz", quantity: 1, price: 4.99, category: "Pantry", min_quantity: 1 },
         ]
     },
     {
@@ -69,12 +70,12 @@ Track your order at amazon.com/orders
 
 Thanks for choosing Amazon Fresh!`,
         items: [
-            { name: "Fairlife Milk 52oz Pack of 2", quantity: 2, price: 9.98, category: "Dairy" },
-            { name: "Oreo Cookies 20oz", quantity: 2, price: 4.99, category: "Pantry" },
-            { name: "Kraft Mac & Cheese 12 pack", quantity: 2, price: 12.99, category: "Pantry" },
-            { name: "Tide Pods 42ct", quantity: 1, price: 19.99, category: "Household" },
-            { name: "Dawn Dish Soap 28oz", quantity: 2, price: 3.99, category: "Household" },
-            { name: "Dove Soap 8 pack", quantity: 1, price: 8.49, category: "Household" },
+            { name: "Fairlife Milk 52oz Pack of 2", quantity: 2, price: 9.98, category: "Dairy", min_quantity: 1 },
+            { name: "Oreo Cookies 20oz", quantity: 2, price: 4.99, category: "Pantry", min_quantity: 1 },
+            { name: "Kraft Mac & Cheese 12 pack", quantity: 2, price: 12.99, category: "Pantry", min_quantity: 1 },
+            { name: "Tide Pods 42ct", quantity: 1, price: 19.99, category: "Household", min_quantity: 1 },
+            { name: "Dawn Dish Soap 28oz", quantity: 2, price: 3.99, category: "Household", min_quantity: 1 },
+            { name: "Dove Soap 8 pack", quantity: 1, price: 8.49, category: "Household", min_quantity: 1 },
         ]
     },
     {
@@ -97,12 +98,12 @@ Your shopper is 10 mins away! 🚗
 
 — Team Instacart`,
         items: [
-            { name: "Land O Lakes Butter 16oz", quantity: 2, price: 4.99, category: "Dairy" },
-            { name: "Cheetos Crunchy 8.5oz", quantity: 4, price: 3.49, category: "Pantry" },
-            { name: "Pepsi 2L", quantity: 6, price: 2.99, category: "Beverages" },
-            { name: "Lays Classic 10oz", quantity: 3, price: 3.99, category: "Pantry" },
-            { name: "Hershey's Chocolate Bar", quantity: 5, price: 1.99, category: "Pantry" },
-            { name: "Tropicana Orange Juice 52oz", quantity: 2, price: 4.49, category: "Beverages" },
+            { name: "Land O Lakes Butter 16oz", quantity: 2, price: 4.99, category: "Dairy", min_quantity: 1 },
+            { name: "Cheetos Crunchy 8.5oz", quantity: 4, price: 3.49, category: "Pantry", min_quantity: 3 },
+            { name: "Pepsi 2L", quantity: 6, price: 2.99, category: "Beverages", min_quantity: 5 },
+            { name: "Lays Classic 10oz", quantity: 3, price: 3.99, category: "Pantry", min_quantity: 2 },
+            { name: "Hershey's Chocolate Bar", quantity: 5, price: 1.99, category: "Pantry", min_quantity: 4 },
+            { name: "Tropicana Orange Juice 52oz", quantity: 2, price: 4.49, category: "Beverages", min_quantity: 1 },
         ]
     }
 ];

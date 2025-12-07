@@ -35,7 +35,7 @@ const getItemImageUrl = (name: string): string => {
 };
 
 export function InventoryItemCard({ item, onEdit, onDelete, onConsume }: InventoryItemProps) {
-    const isLowStock = item.quantity <= 2;
+    const isLowStock = item.quantity <= (item.min_quantity ?? 1);
     const isExpiringSoon = item.expiry_date
         ? new Date(item.expiry_date) < new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
         : false;

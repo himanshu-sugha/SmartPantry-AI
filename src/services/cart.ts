@@ -13,7 +13,7 @@ export interface CartItem {
 export const CartService = {
     async generateCart(inventory: InventoryItem[]): Promise<CartItem[]> {
         // Logic: Find items with low quantity
-        const lowStockItems = inventory.filter(item => item.quantity <= 2);
+        const lowStockItems = inventory.filter(item => item.quantity <= (item.min_quantity ?? 1));
 
         // Mock API call to Amazon/Walmart to get prices and products
         const cartItems: CartItem[] = lowStockItems.map(item => ({

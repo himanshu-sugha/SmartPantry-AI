@@ -75,7 +75,7 @@ export default function AnalyticsPage() {
         return expiry <= sevenDays && expiry >= now;
     }).length || 0;
 
-    const lowStockItems = data?.inventory.filter(item => item.quantity <= 2).length || 0;
+    const lowStockItems = data?.inventory.filter(item => item.quantity <= (item.min_quantity ?? 1)).length || 0;
     const spendProgress = data?.spendData?.monthly_limit ?
         (data.spendData.monthly_spent / data.spendData.monthly_limit) * 100 : 0;
 

@@ -147,6 +147,24 @@ Instead, we created a **sandbox-equivalent experience** using Gemini AI:
 
 ---
 
+## ML Prediction Details
+
+Our forecasting engine uses real statistical ML:
+
+| Component | Algorithm | Purpose |
+|-----------|-----------|---------|
+| **Consumption Tracking** | Event logging with timestamps | Records every "Use" action |
+| **Moving Average** | 14-day Exponential Moving Average | Smooths daily usage patterns |
+| **Confidence Score** | Data quality + Coefficient of Variation | Higher with consistent usage |
+| **Dynamic Thresholds** | Per-item `min_quantity` | Personalized reorder triggers |
+
+**How predictions improve:**
+- 0 consumption events → No prediction (prevents false positives)
+- 1+ consumption events → ML activates with low confidence
+- More usage data → Higher confidence + better accuracy
+
+---
+
 ## AI Methods (GeminiService)
 
 | Method | Purpose |
@@ -238,7 +256,7 @@ We implemented robust safety mechanisms to ensure the autonomous agent operates 
 
 | Category | Technology |
 |----------|------------|
-| Frontend | Next.js 14, React 18, TypeScript |
+| Frontend | Next.js 16, React 19, TypeScript |
 | AI | Google Gemini 2.5 Flash |
 | ML | Browser-based EMA + Seasonality |
 | OCR | Tesseract.js (on-device) |

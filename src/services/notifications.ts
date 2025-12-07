@@ -133,7 +133,7 @@ export const NotificationService = {
                 }
 
                 // Check low stock
-                if (item.quantity <= 2 && item.quantity > 0) {
+                if (item.quantity <= (item.min_quantity ?? 1) && item.quantity > 0) {
                     const existing = this.getNotifications().find(
                         n => n.type === 'low_stock' && n.message.includes(item.name) &&
                             Date.now() - n.timestamp < 24 * 60 * 60 * 1000

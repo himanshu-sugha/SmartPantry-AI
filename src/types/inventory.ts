@@ -22,4 +22,5 @@ export interface CreateItemDTO {
     unit: string;
     expiry_date?: string;
     image_url?: string;
+    min_quantity?: number;
 }
