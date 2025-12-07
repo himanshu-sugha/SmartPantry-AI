@@ -41,11 +41,13 @@ export const SuggestionsService = {
                     urgency,
                     confidence: prediction.confidence_score,
                 });
-            } else if (isLowStock && item.quantity > 0) {
+            } else if (isLowStock) {
                 // Fallback: Low stock without consumption data
                 suggestions.push({
                     item,
-                    reason: `Low stock alert: Only ${item.quantity} left (min: ${item.min_quantity ?? 1}). No consumption history yet.`,
+                    reason: item.quantity === 0
+                        ? `Out of stock! Needs immediate reorder.`
+                        : `Low stock alert: Only ${item.quantity} left (min: ${item.min_quantity ?? 1}). No consumption history yet.`,
                     recommendedQuantity: 5, // Default recommendation
                     urgency: item.quantity === 0 ? 'high' : 'medium',
                     confidence: 0, // 0% confidence = no ML data
